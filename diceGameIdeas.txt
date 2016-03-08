@@ -1,0 +1,94 @@
+Dice Game
+
+
+
+D4- 1 & 2 normal turn
+	3 lose turn
+	4 double turn
+
+D6- Determines Element attack and defense   save in an array i = d6-1
+	earth
+	air
+	fire
+	water
+	light
+	dark
+	
+
+D8- if d6 == 1
+	earth x2
+	==2 
+	air x2
+	==3
+	fir x2
+	==4
+	waterx2 
+	==5
+	light x2
+	==6
+	dark x2
+	==7 
+	damage = .5
+	==8
+	damage = 1.5
+
+D10- Guard block value
+
+D12 - Cost of action(mana)
+
+d20 - attack intensity
+
+
+
+Classes":
+
+setupgame- gets and passes name to player and playerhuman -true/false
+
+Dice - Done
+
+Player- name,
+	current element
+	health
+	mana
+human - 
+Ai - randomizer/logic for choices -- Like to attack weak elements
+
+turn- logic
+
+playersleft =4
+ while players left >1
+	if player1turn = 1 && player1 hp >0
+			player 1 turn
+				"press -- to roll dice"
+				DICE ROLL
+				display results formated
+				set guard and element
+				inputChar - switch attack or rest
+				if d8 == d6
+					damage x 2
+				else if d8 =7
+					damage x .5
+				else if d8 = 8
+					damage x1.5
+				if attack choose target
+					compare attack element vs def element
+					if strong
+						damage = d20 x 2
+					if else weak 
+						damage = d20 x .5
+					else
+						damage = d20
+					
+				damage -= target guard value
+				targetHP -= damage
+				if rest mana += d20
+			after attack is target alive?
+			if no playerleft -1
+		else playerturn ++
+
+
+
+	if playerturn = 5
+		recap
+		set playerturn =1	
+		
