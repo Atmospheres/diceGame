@@ -64,7 +64,10 @@ setupgame- gets and passes name to player and playerhuman -true/false
 				if(i==numHumanPlayers)
 					for (int j = i+1; j <= 4; j++)
 						AI player(j) = new AI (params)
-
+						
+********************************************************
+make a list of type Player, and both Human and AI can be in it
+********************************************************
 
 Dice - Done
 
@@ -84,6 +87,7 @@ playersleft =4
 				"press -- to roll dice"
 				DICE ROLL
 				display results formated
+				
 				select target
 				Turn turn = new Turn(player up, player target
 				set guard and element

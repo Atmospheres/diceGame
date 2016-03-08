@@ -2,5 +2,9 @@ package diceGame;
 
 public class diceGame
 {
-//main
+	
+	public static void main(String args[])
+	{
+
+	}
 }
