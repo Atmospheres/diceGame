@@ -43,6 +43,22 @@ d20 - attack intensity
 Classes":
 
 setupgame- gets and passes name to player and playerhuman -true/false
+		Scanner scanner = new Scanner(System.in);
+		how many players are human 0-4
+			if input int >0
+				Human player1 = new Human
+				input -=1
+			else  if
+				AI player1 = new AI
+
+			if input int >0
+				Human player2 = new Human
+				input -=1
+			else  if
+				AI player2 = new AI
+
+		
+
 
 Dice - Done
 
@@ -62,7 +78,10 @@ playersleft =4
 				"press -- to roll dice"
 				DICE ROLL
 				display results formated
+				select target
+				Turn turn = new Turn(player up, player target
 				set guard and element
+
 				inputChar - switch attack or rest
 				if d8 == d6
 					damage x 2
