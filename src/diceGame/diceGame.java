@@ -1,5 +1,6 @@
 package diceGame;
 
-public class diceGame {
+public class diceGame
+{
 //main
 }

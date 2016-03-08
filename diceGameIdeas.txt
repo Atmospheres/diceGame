@@ -43,6 +43,7 @@ d20 - attack intensity
 Classes":
 
 setupgame- gets and passes name to player and playerhuman -true/false
+
 		Scanner scanner = new Scanner(System.in);
 		how many players are human 0-4
 			if input int >0
@@ -57,7 +58,12 @@ setupgame- gets and passes name to player and playerhuman -true/false
 			else  if
 				AI player2 = new AI
 
-		
+// if it works instead
+			for(int i = 1; i <= numHumanPlayers; i++)
+				Human player(i) = new Human (param1, param2)
+				if(i==numHumanPlayers)
+					for (int j = i+1; j <= 4; j++)
+						AI player(j) = new AI (params)
 
 
 Dice - Done
