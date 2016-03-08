@@ -18,10 +18,7 @@ public class diceGame
 		Event event = new Event();
 		Player player = new Player();
 		
-	
-	
-			
-	//	}
+
 	}
 }
 
