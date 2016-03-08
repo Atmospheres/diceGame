@@ -2,7 +2,8 @@ package diceGame;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Dice{
+public class Dice
+{
 	
 
 	public int DFour()
