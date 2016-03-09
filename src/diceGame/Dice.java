@@ -11,7 +11,6 @@ public class Dice
 	int dTen;
 	int dTwelve;
 	int dTwenty;
-
 	public int DFour()
 	{
 		dFour = ThreadLocalRandom.current().nextInt(1,5);
@@ -41,5 +40,14 @@ public class Dice
 	{
 		dTwenty = ThreadLocalRandom.current().nextInt(1,21);
 		return dTwenty;
+	}
+	public void RollDice()
+	{
+		DFour();
+		DSix();
+		DEight();
+		DTen();
+		DTwelve();
+		DTwenty();
 	}
 }
