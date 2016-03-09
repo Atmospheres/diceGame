@@ -10,8 +10,8 @@ public class SetUpGame
 	ArrayList<Player> playerList = new ArrayList<>();
 	ArrayList<Integer> targetList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
+	Dice dice = new Dice();
 
-	Dice dice = new Dice();	
 	public SetUpGame()
 	{
 		turn = 1;
@@ -41,7 +41,6 @@ public class SetUpGame
 			playerList.add(player2);
 			player2.SetPlayerElement();
 			input -= 1;
-			player2.SetPlayerElement();
 		}
 		else
 		{
@@ -55,13 +54,13 @@ public class SetUpGame
 			playerList.add(player3);
 			player3.SetPlayerElement();
 			input -= 1;
-			player3.SetPlayerElement();
 		}
 		else
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
 			player3.SetPlayerElement();
+
 		}
 	
 		if(input > 0)
@@ -70,7 +69,6 @@ public class SetUpGame
 			playerList.add(player4);
 			player4.SetPlayerElement();
 			input -= 1;
-			player4.SetPlayerElement();
 		}
 		else
 		{
@@ -103,7 +101,6 @@ public class SetUpGame
 			playerList.get(i).ViewCurrentStats();
 			}
 		}
-		
 		public void Match()
 		{
 			while(playerList.size() > 1)
@@ -117,50 +114,47 @@ public class SetUpGame
 		}
 		public void Turn()
 		{
-			
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				dice.RollDice();
-				ReportDice(i);	
-				if(playerList.get(i).isHuman == true)
-				{
-					System.out.println("What would you like to do?");
-					System.out.println("1: Rest" );
-					int options = 2;
-					for(int j = 0; j < playerList.size(); j++)
-					{
-						if(i != j)
-						{
-						System.out.println(options + ": Attack " + playerList.get(j).name);
-						options += 1;	
-						targetList.add(j);
-						}	
-					}
-					inputInt = scanner.nextInt();
-					switch(inputInt){
-						case '0':
-							
-						case '1':
-							playerList.get(i).PlayerRest();
-							break;
-						case '2':
-							Attack(playerList.get(targetList.get(0)));
-							break;
-						case '3':
-							Attack(playerList.get(targetList.get(0)));
-							break;
-						case '4':
-							Attack(playerList.get(targetList.get(0)));
-							break;
-						default:
-							break;
-
-							
-					}
-				}
+				SetDiceValue(i);
+				ReportDice(i);
+				
+                if(playerList.get(i).isHuman == true)
+                {
+                    System.out.println("What would you like to do?");
+                    System.out.println("1: Rest" );
+                    int options = 2;
+                    for(int j = 0; j < playerList.size(); j++)
+                    {
+                        if(i != j)
+                        {
+                        System.out.println(options + ": Attack " + playerList.get(j).name);
+                        targetList.add(j);
+                        options += 1;
+                        }    
+                    }
+                    int	inputInt = scanner.nextInt();
+                    switch(inputInt)
+                    {
+                        case 1:
+                            playerList.get(i).PlayerRest();
+                            break;
+                        case 2:
+                            Attack(targetList.get(0),i);
+                            break;
+                        case 3:
+                            Attack(targetList.get(1),i);
+                            break;
+                        case 4:
+                            Attack(targetList.get(2),i);
+                            break;
+                        default:
+                    }
+                }
 				else
 				{
-					
+				
 				}
 				
 			}
@@ -179,11 +173,17 @@ public class SetUpGame
 			System.out.println("D12: " + dice.dTwelve);
 			System.out.println("D20: " + dice.dTwenty);
 		}
-		public void Attack(Player TargetPlayer)
+		public void Attack(int TargetIndex, int PlayerIndex)
 		{
-			TargetPlayer.health -= dice.dTwenty;
-			TargetPlayer.mana -= dice.dTwelve;
-			TargetPlayer.ViewCurrentStats();
+			playerList.get(TargetIndex).health -= dice.dTwenty;
+			playerList.get(PlayerIndex).mana -= dice.dTwelve;
+			playerList.get(TargetIndex).ViewCurrentStats();
+		}
+		public void SetDiceValue (int Index)
+		{
+			playerList.get(Index).Se
+			playerList.get(Index).mana += dice.dFour;
+			
 		}
 
 	//public PrintPlayerStats(){

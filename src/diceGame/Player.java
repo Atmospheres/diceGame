@@ -8,13 +8,14 @@ public class Player
 	int health;
 	int guardLevel;
 	int mana;
+	int playerNumber;
 	boolean isHuman;
 	
 	Dice dice = new Dice();
 	
 	public Player()
 	{
-		health = 1000;
+		health = 100;
 		mana = 50;
 		isHuman = true;
 	}
@@ -29,15 +30,21 @@ public class Player
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
 	}
-	public void SetPlayerGuard()
+	public int SetPlayerGuard()
 	{
-		guardLevel = dice.DTwelve();
+		guardLevel = dice.DTen();
+		return guardLevel;
 	}
 	public void PlayerRest()
 	{
 		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour();
 		mana += manaIncrease;
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
+	}
+	public void Attack(Player TargetPlayer)
+	{
+		 TargetPlayer.health -= dice.dTwenty;
+		 mana -= dice.dTwelve;
 	}
 	public String SetPlayerElement()
 	{
@@ -68,5 +75,4 @@ public class Player
 			}
 			return currentElement;
 	}
-
 }		

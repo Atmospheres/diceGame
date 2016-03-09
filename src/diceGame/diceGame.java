@@ -9,8 +9,6 @@ public class diceGame
 	{
 		
 		SetUpGame game = new SetUpGame();
-		Scanner scanner = new Scanner(System.in);
-		Player player = new Player();
 		game.PlayerSetup();
 		game.SetPlayerName();
 		game.PrintAllStats();
