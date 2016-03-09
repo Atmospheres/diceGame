@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class SetUpGame
 {
 	boolean gameActive = true;
+	int turn;
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
@@ -11,7 +12,7 @@ public class SetUpGame
 	Dice dice = new Dice();	
 	public SetUpGame()
 	{
-		
+		turn = 1;
 	}
 	
 	public  void PlayerSetup()
@@ -118,14 +119,35 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				playerList.get(i).dice.RollDice();
-				ReportDice(i);				
+				ReportDice(i);	
+				if(playerList.get(i).isHuman == true)
+				{
+					System.out.println("What would you like to do?");
+					System.out.println("1: Rest" );
+					int options = 2;
+					for(int j = 0; j < playerList.size(); j++)
+					{
+						
+						if(i != j)
+						{
+						System.out.println(options + ": Attack " + playerList.get(j).name);
+						options += 1;
+						}
+					}
+				}
+				else
+				{
+					
+				}
+				
 			}
-			
+			turn += 1;
 		}
 		
 		public void ReportDice(int I)
 		{
 			int i = I;
+			System.out.println("Turn: " + turn);
 			System.out.println("Player " + playerList.get(i).name + " rolled:");
 			System.out.println("D4: " + dice.dFour);
 			System.out.println("D6: " + dice.dSix);
