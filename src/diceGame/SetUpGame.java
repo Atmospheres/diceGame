@@ -14,7 +14,7 @@ public class SetUpGame
 		int input = scanner.nextInt();
 		if(input > 0)
 		{
-			Human player1 = new Human();
+			Player player1 = new Player();
 			playerList.add(player1);
 			input -= 1;
 		}
@@ -25,7 +25,7 @@ public class SetUpGame
 		}
 		if(input > 0)
 		{
-			Human player2 = new Human();
+			Player player2 = new Player();
 			playerList.add(player2);
 			input -= 1;
 		}
@@ -36,7 +36,7 @@ public class SetUpGame
 		}
 		if(input > 0)
 		{
-			Human player3 = new Human();
+			Player player3 = new Player();
 			playerList.add(player3);
 			input -= 1;
 		}
@@ -48,7 +48,7 @@ public class SetUpGame
 	
 		if(input > 0)
 		{
-			Human player4 = new Human();
+			Player player4 = new Player();
 			playerList.add(player4);
 			input -= 1;
 		}

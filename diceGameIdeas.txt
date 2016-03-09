@@ -8,11 +8,11 @@ D4- 1 & 2 normal turn
 
 D6- Determines Element attack and defense   save in an array i = d6-1
 	earth
-	air
+	wind
 	fire
 	water
-	light
-	dark
+	ice
+	lightning
 	
 
 D8- if d6 == 1

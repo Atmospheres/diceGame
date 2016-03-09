@@ -15,7 +15,7 @@ public class diceGame
 			
 		
 		Scanner scanner = new Scanner(System.in);
-		Event event = new Event();
+		//Event event = new Event();
 		Player player = new Player();
 		
 
