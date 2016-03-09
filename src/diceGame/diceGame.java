@@ -17,10 +17,7 @@ public class diceGame
 		game.PlayerSetup();
 		game.SetPlayerName();
 		game.PrintAllStats();
-
-		dice.RollDice();
-		dice.ReportDice();
-		
+		game.Match();
 		
 	/*	for(int i =0; i < 4; i++)
 		{
@@ -28,7 +25,6 @@ public class diceGame
 			System.out.println(game.playerList.get(i).name);
 		}
 */		//}
-
 	}
 }
 
