@@ -54,9 +54,6 @@ public class SetUpGame
 			playerList.add(player3);
 			SetDiceValue(2);
 			input -= 1;
-			System.out.println(playerList);
-
-
 		}
 		else
 		{
@@ -79,7 +76,6 @@ public class SetUpGame
 			playerList.add(player4);
 			SetDiceValue(3);
 		}		
-		System.out.println(playerList);
 	}
 
 		public void SetPlayerName()
