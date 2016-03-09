@@ -9,16 +9,20 @@ public class diceGame
 	{
 		int inputInt;
 		SetUpGame game = new SetUpGame();
-		
-	//	while(SetUpGame.gameActive ==  true)
-	//	{
+		Scanner scanner = new Scanner(System.in);
+		Player player = new Player();
+				while(game.gameActive ==  true)
+		{
 			
 		
-		Scanner scanner = new Scanner(System.in);
-		//Event event = new Event();
-		Player player = new Player();
 		
-
+		
+		for(int i =0; i < 4; i++)
+		{
+			System.out.println(game.playerList.get(i).currentElement);
+		
+		}
+		}
 	}
 }
 
