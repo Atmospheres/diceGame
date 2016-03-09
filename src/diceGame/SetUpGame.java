@@ -5,8 +5,10 @@ public class SetUpGame
 {
 	boolean gameActive = true;
 	int turn;
+	int inputInt;
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
+	ArrayList<Integer> targetList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
 
 	Dice dice = new Dice();	
@@ -118,7 +120,7 @@ public class SetUpGame
 			
 			for(int i = 0; i < playerList.size(); i++)
 			{
-				playerList.get(i).dice.RollDice();
+				dice.RollDice();
 				ReportDice(i);	
 				if(playerList.get(i).isHuman == true)
 				{
@@ -127,12 +129,33 @@ public class SetUpGame
 					int options = 2;
 					for(int j = 0; j < playerList.size(); j++)
 					{
-						
 						if(i != j)
 						{
 						System.out.println(options + ": Attack " + playerList.get(j).name);
-						options += 1;
-						}
+						options += 1;	
+						targetList.add(j);
+						}	
+					}
+					inputInt = scanner.nextInt();
+					switch(inputInt){
+						case '0':
+							
+						case '1':
+							playerList.get(i).PlayerRest();
+							break;
+						case '2':
+							Attack(playerList.get(targetList.get(0)));
+							break;
+						case '3':
+							Attack(playerList.get(targetList.get(0)));
+							break;
+						case '4':
+							Attack(playerList.get(targetList.get(0)));
+							break;
+						default:
+							break;
+
+							
 					}
 				}
 				else
@@ -155,6 +178,12 @@ public class SetUpGame
 			System.out.println("D10: " + dice.dTen);
 			System.out.println("D12: " + dice.dTwelve);
 			System.out.println("D20: " + dice.dTwenty);
+		}
+		public void Attack(Player TargetPlayer)
+		{
+			TargetPlayer.health -= dice.dTwenty;
+			TargetPlayer.mana -= dice.dTwelve;
+			TargetPlayer.ViewCurrentStats();
 		}
 
 	//public PrintPlayerStats(){

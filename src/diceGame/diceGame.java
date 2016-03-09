@@ -7,7 +7,7 @@ public class diceGame
 {
 	public static void main(String[] args)
 	{
-		int inputInt;
+		
 		SetUpGame game = new SetUpGame();
 		Scanner scanner = new Scanner(System.in);
 		Player player = new Player();
