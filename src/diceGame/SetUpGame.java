@@ -81,6 +81,19 @@ public class SetUpGame
 		
 			}
 		}  
+		
+		public void PrintRules()
+		{
+			System.out.println("All the Game Rules!!!");
+		}
+		
+		public void PrintAllStats()
+		{
+			for( int i = 0; i < 4; i++)
+			{
+			playerList.get(i).ViewCurrentStats();
+			}
+		}
 	
 	//public PrintPlayerStats(){
 	//	for()// each item in playerlist call ViewCurrentStats on that player

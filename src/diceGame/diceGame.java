@@ -11,18 +11,23 @@ public class diceGame
 		SetUpGame game = new SetUpGame();
 		Scanner scanner = new Scanner(System.in);
 		Player player = new Player();
-			//	while(game.gameActive ==  true)
-	//	{
-			
-		
-		
+		//while(game.gameActive ==  true)
+		//{
 		game.SetPlayerName();
-		for(int i =0; i < 4; i++)
+		game.PrintAllStats();
+		
+		
+		
+		
+		
+		
+		
+	/*	for(int i =0; i < 4; i++)
 		{
 			System.out.println(game.playerList.get(i).currentElement);
 			System.out.println(game.playerList.get(i).name);
 		}
-	//	}
+*/		//}
 	}
 }
 
