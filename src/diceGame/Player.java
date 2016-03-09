@@ -39,4 +39,4 @@ public class Player
 		mana += manaIncrease;
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
-}
+}		

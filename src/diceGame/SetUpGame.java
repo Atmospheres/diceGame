@@ -10,7 +10,7 @@ public class SetUpGame
 	public SetUpGame()
 	{
 		gameActive = true;
-		System.out.println("How many human players? (Max 4)");
+		System.out.println("How many Player players? (Max 4)");
 		int input = scanner.nextInt();
 		if(input > 0)
 		{
