@@ -9,18 +9,22 @@ public class diceGame
 	{
 		int inputInt;
 		SetUpGame game = new SetUpGame();
-		
-	//	while(SetUpGame.gameActive ==  true)
-	//	{
-			
-		
 		Scanner scanner = new Scanner(System.in);
-		//Event event = new Event();
 		Player player = new Player();
-		
+		//while(game.gameActive ==  true)
+		//{
 		game.SetPlayerName();
-		game.PrintRules();
 		game.PrintAllStats();
+
+
+		
+		
+	/*	for(int i =0; i < 4; i++)
+		{
+			System.out.println(game.playerList.get(i).currentElement);
+			System.out.println(game.playerList.get(i).name);
+		}
+*/		//}
 	}
 }
 

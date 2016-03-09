@@ -32,6 +32,7 @@ public class SetUpGame
 			playerList.add(player2);
 			player2.SetPlayerElement();
 			input -= 1;
+			player2.SetPlayerElement();
 		}
 		else
 		{
@@ -45,6 +46,7 @@ public class SetUpGame
 			playerList.add(player3);
 			player3.SetPlayerElement();
 			input -= 1;
+			player3.SetPlayerElement();
 		}
 		else
 		{
@@ -59,6 +61,7 @@ public class SetUpGame
 			playerList.add(player4);
 			player4.SetPlayerElement();
 			input -= 1;
+			player4.SetPlayerElement();
 		}
 		else
 		{
@@ -78,8 +81,7 @@ public class SetUpGame
 				String name = scanner.nextLine();
 				playerList.get(i).name = name;
 			}
-		}
-		
+		}  
 		public void PrintRules()
 		{
 			System.out.println("All the Game Rules!!!");
@@ -87,11 +89,12 @@ public class SetUpGame
 		
 		public void PrintAllStats()
 		{
-			for(int i = 0; i < 4; i++)
+			for( int i = 0; i < 4; i++)
 			{
 			playerList.get(i).ViewCurrentStats();
 			}
 		}
+
 	//public PrintPlayerStats(){
 	//	for()// each item in playerlist call ViewCurrentStats on that player
 			
