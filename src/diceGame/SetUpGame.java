@@ -7,8 +7,8 @@ public class SetUpGame
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
-	Dice dice = new Dice();
-	
+
+	Dice dice = new Dice();	
 	public SetUpGame()
 	{
 		
@@ -36,6 +36,7 @@ public class SetUpGame
 		{
 			Player player2 = new Player();
 			playerList.add(player2);
+			player2.SetPlayerElement();
 			input -= 1;
 			player2.SetPlayerElement();
 		}
@@ -49,6 +50,7 @@ public class SetUpGame
 		{
 			Player player3 = new Player();
 			playerList.add(player3);
+			player3.SetPlayerElement();
 			input -= 1;
 			player3.SetPlayerElement();
 		}
@@ -63,6 +65,7 @@ public class SetUpGame
 		{
 			Player player4 = new Player();
 			playerList.add(player4);
+			player4.SetPlayerElement();
 			input -= 1;
 			player4.SetPlayerElement();
 		}
@@ -73,22 +76,18 @@ public class SetUpGame
 			player4.SetPlayerElement();
 		}
 	}
-		
-	
-	
+
 		public void SetPlayerName()
 		{
 			scanner.nextLine();
 			for(int i = 0; i < 4; i++)
-			{	
-				int playerNumber = i+1;
-				System.out.println("Please enter a name for player " + playerNumber + ":" );
+			{
+				int playerNumber = i + 1;
+				System.out.println("Please enter a name for player " + playerNumber + ": ");
 				String name = scanner.nextLine();
 				playerList.get(i).name = name;
-		
 			}
 		}  
-		
 		public void PrintRules()
 		{
 			System.out.println("All the Game Rules!!!");
@@ -101,8 +100,6 @@ public class SetUpGame
 			playerList.get(i).ViewCurrentStats();
 			}
 		}
-		
-		
 		
 		public void Match()
 		{
@@ -137,6 +134,7 @@ public class SetUpGame
 			System.out.println("D12: " + dice.dTwelve);
 			System.out.println("D20: " + dice.dTwenty);
 		}
+
 	//public PrintPlayerStats(){
 	//	for()// each item in playerlist call ViewCurrentStats on that player
 			

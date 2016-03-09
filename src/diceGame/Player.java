@@ -65,7 +65,6 @@ public class Player
 				default:
 					currentElement = "Fire";
 					break;
-			
 			}
 			return currentElement;
 	}

@@ -2,9 +2,7 @@ Dice Game
 
 
 
-D4- 1 & 2 normal turn
-	3 lose turn
-	4 double turn
+D4- mana regen value
 
 D6- Determines Element attack and defense   save in an array i = d6-1
 	earth
@@ -15,7 +13,7 @@ D6- Determines Element attack and defense   save in an array i = d6-1
 	lightning
 	
 
-D8- if d6 == 1
+D8- if d6 == 1 //elemental multiplier
 	earth x2
 	==2 
 	air x2
