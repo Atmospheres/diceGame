@@ -11,6 +11,12 @@ public class Player
 	int playerNumber;
 	int element;
 	boolean isHuman;
+	int dFour;
+	int dSix;
+	int dEight;
+	int dTen;
+	int dTwelve;
+	int dTwenty;
 	
 	Dice dice = new Dice();
 	
@@ -19,6 +25,8 @@ public class Player
 		health = 100;
 		mana = 50;
 		isHuman = true;
+		RollDice();
+		
 	}
 	
 	public void ViewCurrentStats()
@@ -27,7 +35,7 @@ public class Player
 	}
 	public void ManaRegen()
 	{
-		int manaIncrease = dice.dFour;
+		int manaIncrease = dFour;
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
 	}
@@ -41,13 +49,13 @@ public class Player
 
 	public int SetPlayerGuard()
 	{
-		guardLevel = dice.dTen;
+		guardLevel = dTen;
 		System.out.println(guardLevel);
 		return guardLevel;
 	}
 	public String SetPlayerElement()
 	{
-			element = dice.dSix;
+			element = dSix;
 			switch(element)
 			{
 				case 1:
@@ -74,4 +82,13 @@ public class Player
 			}
 			return currentElement;
 	}
-}		
+	public void RollDice()
+	{
+		dFour = dice.DFour();
+		dSix = dice.DSix();
+		dEight = dice.DEight();
+		dTen = dice.DTen();
+		dTwelve = dice.DTwelve();
+		dTwenty = dice.DTwenty();
+	}
+}	
