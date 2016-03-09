@@ -66,8 +66,12 @@ public class SetUpGame
 			player4.SetPlayerElement();
 		}
 	}
-		public void PlayerName()
+		
+	
+	
+		public void SetPlayerName()
 		{
+			scanner.nextLine();
 			for(int i = 0; i < 4; i++)
 			{	
 				int playerNumber = i+1;
@@ -76,7 +80,7 @@ public class SetUpGame
 				playerList.get(i).name = name;
 		
 			}
-		}
+		}  
 	
 	//public PrintPlayerStats(){
 	//	for()// each item in playerlist call ViewCurrentStats on that player
