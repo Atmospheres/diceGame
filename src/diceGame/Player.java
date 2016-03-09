@@ -20,4 +20,7 @@ public class Player
 	{
 		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Element: " + currentElement);
 	}
+	
+	
+	
 }
