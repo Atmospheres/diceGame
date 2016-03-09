@@ -19,8 +19,7 @@ public class diceGame
 		game.PrintAllStats();
 
 		dice.RollDice();
-		
-		System.out.println(dice.dFour);
+		dice.ReportDice();
 		
 		
 	/*	for(int i =0; i < 4; i++)
@@ -29,9 +28,7 @@ public class diceGame
 			System.out.println(game.playerList.get(i).name);
 		}
 */		//}
-		game.PlayerSetup();
-		game.SetPlayerName();
-		game.PrintAllStats();
+
 	}
 }
 

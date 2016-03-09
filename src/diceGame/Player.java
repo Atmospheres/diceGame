@@ -8,6 +8,7 @@ public class Player
 	int health;
 	int guardLevel;
 	int mana;
+	int playerNumber;
 	boolean isHuman;
 	
 	Dice dice = new Dice();
@@ -38,6 +39,11 @@ public class Player
 		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour();
 		mana += manaIncrease;
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
+	}
+	public void PlayerAttack(Player TargetPlayer)
+	{
+		 TargetPlayer.health -= dice.dTwenty;
+		 mana -= dice.dTwelve;
 	}
 	public String SetPlayerElement()
 	{

@@ -6,6 +6,7 @@ public class SetUpGame
 	boolean gameActive = true;
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
+	ArrayList<Integer> targetList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
 	Dice dice = new Dice();
 
@@ -24,6 +25,7 @@ public class SetUpGame
 			Player player1 = new Player();
 			playerList.add(player1);
 			player1.SetPlayerElement();
+			player1.playerNumber = 1;
 			input -= 1;
 		}
 		else
@@ -31,6 +33,7 @@ public class SetUpGame
 			AI player1 = new AI();
 			playerList.add(player1);
 			player1.SetPlayerElement();
+			player1.playerNumber = 1;
 		}
 		if(input > 0)
 		{
@@ -38,13 +41,15 @@ public class SetUpGame
 			playerList.add(player2);
 			player2.SetPlayerElement();
 			input -= 1;
-			player2.SetPlayerElement();
+			player2.playerNumber = 2;
 		}
 		else
 		{
 			AI player2 = new AI();
 			playerList.add(player2);
 			player2.SetPlayerElement();
+			player2.playerNumber = 2;
+
 		}
 		if(input > 0)
 		{
@@ -52,13 +57,16 @@ public class SetUpGame
 			playerList.add(player3);
 			player3.SetPlayerElement();
 			input -= 1;
-			player3.SetPlayerElement();
+			player3.playerNumber = 3;
+
 		}
 		else
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
 			player3.SetPlayerElement();
+			player3.playerNumber = 3;
+
 		}
 	
 		if(input > 0)
@@ -67,13 +75,15 @@ public class SetUpGame
 			playerList.add(player4);
 			player4.SetPlayerElement();
 			input -= 1;
-			player4.SetPlayerElement();
+			player4.playerNumber = 4;
 		}
 		else
 		{
 			AI player4 = new AI();
 			playerList.add(player4);
 			player4.SetPlayerElement();
+			player4.playerNumber = 4;
+
 		}
 	}
 
@@ -117,10 +127,42 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				playerList.get(i).dice.RollDice();
-				ReportDice(i);				
+				ReportDice(i);		
+                if(playerList.get(i).isHuman == true)
+                {
+                    System.out.println("What would you like to do?");
+                    System.out.println("1: Rest" );
+                    int options = 2;
+                    for(int j = 0; j < playerList.size(); j++)
+                    {
+                        if(i != j)
+                        {
+                        System.out.println(options + ": Attack " + playerList.get(j).name);
+                        targetList.add(j);
+                        options += 1;
+                        }    
+                    }
+
+                    int	inputInt = scanner.nextInt();
+                    switch(inputInt){
+                        case '1':
+                            playerList.get(i).PlayerRest();
+                            break;
+                        case '2':
+                            playerList.get(i).PlayerAttack(playerList.get(targetList.get(0)));
+                            break;
+                        case '3':
+                            playerList.get(i).PlayerAttack(playerList.get(targetList.get(1)));
+                            break;
+                        case '4':
+                            playerList.get(i).PlayerAttack(playerList.get(targetList.get(2)));
+                            break;
+                        default:
+                            break;
+                }
 			}
-			
 		}
+	}
 		
 		public void ReportDice(int I)
 		{
