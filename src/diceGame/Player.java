@@ -39,9 +39,11 @@ public class Player
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
 
-	public void SetPlayerGuard()
+	public int SetPlayerGuard()
 	{
 		guardLevel = dice.dTen;
+		System.out.println(guardLevel);
+		return guardLevel;
 	}
 	public String SetPlayerElement()
 	{

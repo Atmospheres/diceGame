@@ -9,7 +9,6 @@ public class SetUpGame
 	ArrayList<Player> playerList = new ArrayList<>();
 	ArrayList<Integer> targetList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
-	Dice dice = new Dice();
 
 	public SetUpGame()
 	{
@@ -21,7 +20,7 @@ public class SetUpGame
 		gameActive = true;
 		System.out.println("How many Player players? (Max 4)");
 		int input = scanner.nextInt();
-		dice.RollDice();
+		player.dice.RollDice();
 		if(input > 0)
 		{
 			Player player1 = new Player();
@@ -55,7 +54,6 @@ public class SetUpGame
 			playerList.add(player3);
 			SetDiceValue(2);
 			input -= 1;
-
 		}
 		else
 		{
@@ -77,7 +75,7 @@ public class SetUpGame
 			AI player4 = new AI();
 			playerList.add(player4);
 			SetDiceValue(3);
-		}
+		}		
 	}
 
 		public void SetPlayerName()
@@ -119,7 +117,7 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
-				dice.RollDice();
+				player.dice.RollDice();
 				SetDiceValue(i);
 				ReportDice(i);		
                 if(playerList.get(i).isHuman == true)
@@ -164,30 +162,30 @@ public class SetUpGame
 			int i = I;
 			System.out.println("Turn: " + turn);
 			System.out.println("Player " + playerList.get(i).name + " rolled:");
-			System.out.println("Mana Regen(D4): " + dice.dFour);
-			System.out.println("Element(D6): " + playerList.get(i).currentElement + "(" + dice.dSix + ")");
-			System.out.println("Mulitplier(D8): " + dice.dEight);
-			System.out.println("Guard(D10): " + dice.dTen);
-			System.out.println("Attack Cost(D12): " + dice.dTwelve);
-			System.out.println("Attack Damage(D20): " + dice.dTwenty);
+			System.out.println("Mana Regen(D4): " + player.dice.dFour);
+			System.out.println("Element(D6): " + playerList.get(i).currentElement + "(" + player.dice.dSix + ")");
+			System.out.println("Mulitplier(D8): " + player.dice.dEight);
+			System.out.println("Guard(D10): " + player.dice.dTen);
+			System.out.println("Attack Cost(D12): " + player.dice.dTwelve);
+			System.out.println("Attack Damage(D20): " + player.dice.dTwenty);
 		}
 		public void Attack(int TargetIndex, int PlayerIndex)
 		{
 			CalculateCritial();
 			CalculateElemental(TargetIndex, PlayerIndex);
-			if (playerList.get(TargetIndex).guardLevel > dice.dTwenty)
+			if (playerList.get(TargetIndex).guardLevel > player.dice.dTwenty)
 			{
-				playerList.get(TargetIndex).guardLevel = dice.dTwenty;
+				playerList.get(TargetIndex).guardLevel = player.dice.dTwenty;
 			}
-			playerList.get(TargetIndex).health -= dice.dTwenty - playerList.get(TargetIndex).guardLevel;
-			playerList.get(PlayerIndex).mana -= dice.dTwelve;
+			playerList.get(TargetIndex).health -= player.dice.dTwenty - playerList.get(TargetIndex).guardLevel;
+			playerList.get(PlayerIndex).mana -= player.dice.dTwelve;
 			playerList.get(TargetIndex).ViewCurrentStats();
 		}	
 		public void CalculateCritial()
 		{
-			if (dice.dEight == dice.dSix)
+			if (player.dice.dEight == player.dice.dSix)
 			{
-				dice.dTwenty *= 2;
+				player.dice.dTwenty *= 2;
 			}
 		}
 		public void CalculateElemental(int TargetIndex, int PlayerIndex)
@@ -195,19 +193,19 @@ public class SetUpGame
 			if(playerList.get(PlayerIndex).element == playerList.get(TargetIndex).element - 1 || 
 					playerList.get(PlayerIndex).element == 6 && playerList.get(TargetIndex).element == 1)
 			{
-				dice.dTwenty *= 2;
+				player.dice.dTwenty *= 2;
 			}
 			else if(playerList.get(PlayerIndex).element == playerList.get(TargetIndex).element + 1 ||
 					playerList.get(PlayerIndex).element == 1 && playerList.get(TargetIndex).element == 6)
 			{
-				dice.dTwenty /= 2;
+				player.dice.dTwenty /= 2;
 			}
 		}
 		
 		public void SetDiceValue(int PlayerIndex)
 		{
-			playerList.get(PlayerIndex).SetPlayerGuard();
-			playerList.get(PlayerIndex).SetPlayerElement();
+			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();
+			playerList.get(PlayerIndex).currentElement = playerList.get(PlayerIndex).SetPlayerElement();
 		}
 
 	//public PrintPlayerStats(){
