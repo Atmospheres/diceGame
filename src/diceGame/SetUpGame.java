@@ -20,46 +20,46 @@ public class SetUpGame
 		gameActive = true;
 		System.out.println("How many Player players? (Max 4)");
 		int input = scanner.nextInt();
-		player.dice.RollDice();
+		//player.dice.RollDice();
 		if(input > 0)
 		{
 			Player player1 = new Player();
 			playerList.add(player1);
-			SetDiceValue(0);
+			player.SetDiceValue();
 			input -= 1;
 		}
 		else
 		{
 			AI player1 = new AI();
 			playerList.add(player1);
-			SetDiceValue(0);
+			player.SetDiceValue();
 		}
 		if(input > 0)
 		{
 			Player player2 = new Player();
 			playerList.add(player2);
-			SetDiceValue(1);
+			player.SetDiceValue();
 			input -= 1;
 		}
 		else
 		{
 			AI player2 = new AI();
 			playerList.add(player2);
-			SetDiceValue(1);
+			player.SetDiceValue();
 
 		}
 		if(input > 0)
 		{
 			Player player3 = new Player();
 			playerList.add(player3);
-			SetDiceValue(2);
+			player.SetDiceValue();
 			input -= 1;
 		}
 		else
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
-			SetDiceValue(2);
+			player.SetDiceValue();
 
 		}
 	
@@ -67,15 +67,20 @@ public class SetUpGame
 		{
 			Player player4 = new Player();
 			playerList.add(player4);
-			SetDiceValue(3);
+			player.SetDiceValue();
 			input -= 1;
 		}
 		else
 		{
 			AI player4 = new AI();
 			playerList.add(player4);
-			SetDiceValue(3);
-		}		
+			player.SetDiceValue();
+		}	
+		for(int i = 0; i < 4; i++)
+		{
+			player.dice.RollDice();
+			player.SetDiceValue();
+		}
 	}
 
 		public void SetPlayerName()
@@ -87,6 +92,8 @@ public class SetUpGame
 				System.out.println("Please enter a name for player " + playerNumber + ": ");
 				String name = scanner.nextLine();
 				playerList.get(i).name = name;
+				player.dice.RollDice();
+				player.SetDiceValue();
 			}
 		}  
 		public void PrintRules()
@@ -118,7 +125,7 @@ public class SetUpGame
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
 				player.dice.RollDice();
-				SetDiceValue(i);
+				player.SetDiceValue();
 				ReportDice(i);		
                 if(playerList.get(i).isHuman == true)
                 {
@@ -200,12 +207,6 @@ public class SetUpGame
 			{
 				player.dice.dTwenty /= 2;
 			}
-		}
-		
-		public void SetDiceValue(int PlayerIndex)
-		{
-			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();
-			playerList.get(PlayerIndex).currentElement = playerList.get(PlayerIndex).SetPlayerElement();
 		}
 
 	//public PrintPlayerStats(){

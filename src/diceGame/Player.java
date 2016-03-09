@@ -2,17 +2,18 @@ package diceGame;
 
 public class Player
 {
+	Dice dice = new Dice();
 	
 	String name;
-	String currentElement;
+	String currentElement = SetPlayerElement();
 	int health;
-	int guardLevel;
+	int guardLevel = SetPlayerGuard();
 	int mana;
 	int playerNumber;
-	int element;
+	int element = dice.dSix;
 	boolean isHuman;
 	
-	Dice dice = new Dice();
+	
 	
 	public Player()
 	{
@@ -23,7 +24,7 @@ public class Player
 	
 	public void ViewCurrentStats()
 	{
-		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Guard: " + guardLevel + "\t Element: " + currentElement);
+		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Guard: " + SetPlayerGuard() + "\t Element: " + SetPlayerElement());
 	}
 	public void ManaRegen()
 	{
@@ -72,6 +73,13 @@ public class Player
 					currentElement = "Fire";
 					break;
 			}
+			System.out.println(element);
+			System.out.println(currentElement);
 			return currentElement;
+	}
+	public void SetDiceValue()
+	{
+		guardLevel = SetPlayerGuard();
+		currentElement = SetPlayerElement();
 	}
 }		
