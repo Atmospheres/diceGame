@@ -12,7 +12,6 @@ public class Dice
 	int dTen;
 	int dTwelve;
 	int dTwenty;
-
 	public int DFour()
 	{
 		dFour = ThreadLocalRandom.current().nextInt(1,5);

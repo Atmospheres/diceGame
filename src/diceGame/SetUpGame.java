@@ -8,13 +8,13 @@ public class SetUpGame
 	ArrayList<Player> playerList = new ArrayList<>();
 	Scanner scanner = new Scanner(System.in);
 	Dice dice = new Dice();
-	
+
 	public SetUpGame()
 	{
 		
 	}
 	
-	public void PlayerSetup()
+	public  void PlayerSetup()
 	{
 		gameActive = true;
 		System.out.println("How many Player players? (Max 4)");
@@ -100,10 +100,32 @@ public class SetUpGame
 			playerList.get(i).ViewCurrentStats();
 			}
 		}
+		public void Match()
+		{
+			while(playerList.size() > 1)
+			{
+				this.Turn();
+			}
+			if(playerList.size() == 1){
+				System.out.println("Game Over!");
+			}
+				
+		}
+		public void Turn()
+		{
+			
+			for(int i = 0; i < playerList.size(); i++)
+			{
+				playerList.get(i).dice.RollDice();
+				ReportDice(i);				
+			}
+			
+		}
+		
 		public void ReportDice(int I)
 		{
 			int i = I;
-			System.out.println(playerList.get(i).name + " rolled:");
+			System.out.println("Player " + playerList.get(i).name + " rolled:");
 			System.out.println("D4: " + dice.dFour);
 			System.out.println("D6: " + dice.dSix);
 			System.out.println("D8: " + dice.dEight);

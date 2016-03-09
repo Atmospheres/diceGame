@@ -29,6 +29,9 @@ public class diceGame
 			System.out.println(game.playerList.get(i).name);
 		}
 */		//}
+		game.PlayerSetup();
+		game.SetPlayerName();
+		game.PrintAllStats();
 	}
 }
 
