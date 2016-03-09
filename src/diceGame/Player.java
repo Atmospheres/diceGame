@@ -63,9 +63,8 @@ public class Player
 					currentElement = "Water";
 					break;
 				default:
-					currentElement = "Fire"
-					break;
-			
+					currentElement = "Fire";
+					break;		
 			}
 			return currentElement;
 	}
