@@ -9,6 +9,7 @@ public class Player
 	int guardLevel;
 	int mana;
 	int playerNumber;
+	int element;
 	boolean isHuman;
 	
 	Dice dice = new Dice();
@@ -22,34 +23,32 @@ public class Player
 	
 	public void ViewCurrentStats()
 	{
-		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Element: " + currentElement);
+		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Guard: " + guardLevel + "\t Element: " + currentElement);
 	}
 	public void ManaRegen()
 	{
-		int manaIncrease = dice.DFour();
+		int manaIncrease = dice.dFour;
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
 	}
-	public int SetPlayerGuard()
-	{
-		guardLevel = dice.DTen();
-		return guardLevel;
-	}
+
 	public void PlayerRest()
 	{
 		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour();
 		mana += manaIncrease;
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
-	public void Attack(Player TargetPlayer)
+
+	public int SetPlayerGuard()
 	{
-		 TargetPlayer.health -= dice.dTwenty;
-		 mana -= dice.dTwelve;
+		guardLevel = dice.dTen;
+		System.out.println(guardLevel);
+		return guardLevel;
 	}
 	public String SetPlayerElement()
 	{
-			int roll = dice.DSix();
-			switch(roll)
+			element = dice.dSix;
+			switch(element)
 			{
 				case 1:
 					currentElement = "Fire";
