@@ -39,9 +39,9 @@ public class Player
 	}
 	public void PlayerRest()
 	{
-		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour();
+		int manaIncrease = dice.DFour() + dice.DFour();
 		mana += manaIncrease;
-		System.out.println("After 3 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
+		System.out.println("After 2 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
 	public int SetPlayerGuard()
 	{
