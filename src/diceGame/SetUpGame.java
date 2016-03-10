@@ -1,6 +1,7 @@
 package diceGame;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class SetUpGame
 {
 	boolean gameActive = true;
@@ -73,11 +74,6 @@ public class SetUpGame
 		{
 			AI player4 = new AI();
 			playerList.add(player4);
-			SetDiceValue(3);
-		}	
-		for(int i = 0; i < 4; i++)
-		{
-			player.RollDice();
 			SetDiceValue(3);
 		}	
 	}
@@ -159,9 +155,6 @@ public class SetUpGame
                             break;
                     }
 			}	
-                targetList.remove(0);
-                targetList.remove(0);
-                targetList.remove(0);
     				targetList.remove(0);
     				targetList.remove(0);
     				targetList.remove(0);

@@ -17,17 +17,14 @@ public class Player
 	int dEight;
 	int dTen;
 	int dTwelve;
-	int dTwenty;
-	
-	
+	int dTwenty;	
 	
 	public Player()
 	{
 		health = 100;
 		mana = 50;
 		isHuman = true;
-		RollDice();
-		
+		RollDice();	
 	}
 	
 	public void ViewCurrentStats()
@@ -40,14 +37,12 @@ public class Player
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
 	}
-
 	public void PlayerRest()
 	{
 		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour() + dice.DFour();
 		mana += manaIncrease;
 		System.out.println("After 5 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
-
 	public int SetPlayerGuard()
 	{
 		guardLevel = dTen;
