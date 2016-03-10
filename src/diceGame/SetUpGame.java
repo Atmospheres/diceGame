@@ -89,8 +89,8 @@ public class SetUpGame
 			scanner.nextLine();
 			for(int i = 0; i < 4; i++)
 			{
-				int playerNumber = i + 1;
-				System.out.println("Please enter a name for player " + playerNumber + ": ");
+				
+				System.out.println("Please enter a name for player " + (i + 1) + ": ");
 				String name = scanner.nextLine();
 				playerList.get(i).name = name;
 			}
@@ -149,7 +149,7 @@ public class SetUpGame
             System.out.println("What would you like to do?");
             System.out.println("1: Rest" );
 			
-			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			if(playerList.get(i).mana >= playerList.get(i).dTwelve)
 			{
 				
 				int options = 2;
@@ -167,7 +167,7 @@ public class SetUpGame
 
 		public void PlayerChoice(int i)
 		{
-			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			if(playerList.get(i).mana >= playerList.get(i).dTwelve)
 			{
 				int	inputInt = scanner.nextInt();
 				switch(inputInt)
@@ -203,7 +203,7 @@ public class SetUpGame
 		}
 		public void AIChoice(int i)
 		{
-			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			if(playerList.get(i).mana >= playerList.get(i).dTwelve)
 			{
 				int	inputInt = ThreadLocalRandom.current().nextInt(1, targetList.size() + 2);
 				switch(inputInt)
