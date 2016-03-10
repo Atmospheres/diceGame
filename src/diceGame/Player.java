@@ -9,7 +9,6 @@ public class Player
 	int health;
 	int guardLevel = SetPlayerGuard();
 	int mana;
-	int playerNumber;
 	int element;
 	boolean isHuman;
 	int dFour;
