@@ -63,6 +63,8 @@ public class SetUpGame
 			playerList.add(player3);
 			SetDiceValue(2);
 			player3.isHuman = false;
+
+
 		}
 	
 		if(input > 0)
@@ -113,7 +115,7 @@ public class SetUpGame
 			{		
 				this.Turn();
 			}
-			EndMatch();
+			EndMatch();			
 		}
 		public void Turn()
 		{
@@ -259,7 +261,7 @@ public class SetUpGame
         {
             if (playerList.get(TargetIndex).health <= 0)
             {
-            	System.out.println();
+                System.out.println();
                 System.out.println(playerList.get(TargetIndex).name + " has been defeated!");
                 playerList.remove(TargetIndex);
             }
