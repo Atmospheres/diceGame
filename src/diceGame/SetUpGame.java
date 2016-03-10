@@ -87,7 +87,7 @@ public class SetUpGame
 		public void SetPlayerName()
 		{
 			scanner.nextLine();
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println("Please enter a name for player " + (i + 1) + ": ");
 				String name = scanner.nextLine();
