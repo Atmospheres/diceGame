@@ -76,6 +76,7 @@ public class SetUpGame
 			playerList.add(player4);
 			SetDiceValue(3);
 		}	
+		SetPlayerName();
 	}
 
 		public void SetPlayerName()
@@ -199,11 +200,7 @@ public class SetUpGame
 		}
 		public void EndTurn()
 		{
-			// alternate method if it ends up outside range?
-			// targetList.removeAll(targetList);
-			targetList.remove(0);
-			targetList.remove(0);
-			targetList.remove(0);
+			targetList.removeAll(targetList);
 		}	
 		public void ReportDice(int I)
 		{
@@ -236,8 +233,6 @@ public class SetUpGame
                 playerList.remove(TargetIndex);
             }
         }
-
-
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
 			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)
