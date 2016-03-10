@@ -49,7 +49,6 @@ public class SetUpGame
 			playerList.add(player2);
 			SetDiceValue(1);
 			player2.isHuman = false;
-
 		}
 		if(input > 0)
 		{
@@ -64,6 +63,7 @@ public class SetUpGame
 			playerList.add(player3);
 			SetDiceValue(2);
 			player3.isHuman = false;
+
 
 		}
 	
