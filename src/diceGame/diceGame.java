@@ -8,20 +8,14 @@ public class diceGame
 
 		game.PlayerSetup();
 		game.SetPlayerName();
-		game.PrintAllStats();
 		game.Match();
 	}
 }
 
 //DO TOMORROW
 
-//Mana check for everyone
-
-//Print all after each player's turn
-
 //AI random functions
 //AI mana cost vs damage logic
-
 
 
 //When we have time

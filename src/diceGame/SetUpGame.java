@@ -96,7 +96,7 @@ public class SetUpGame
 		
 		public void PrintAllStats()
 		{
-			for( int i = 0; i < 4; i++)
+			for(int i = 0; i < playerList.size(); i++)
 			{
 			playerList.get(i).ViewCurrentStats();
 			}
@@ -106,7 +106,6 @@ public class SetUpGame
 			while(playerList.size() > 1)
 			{		
 				this.Turn();
-				PrintAllStats();
 			}
 			if(playerList.size() == 1){
 				System.out.println("Game Over!");
@@ -116,39 +115,26 @@ public class SetUpGame
 		{
 			for(int i = 0; i < playerList.size(); i++)
 			{
+				PrintAllStats();
 				System.out.println(playerList.get(i).name + "'s turn.");
-<<<<<<< HEAD
 				playerList.get(i).RollDice();
 				SetDiceValue(i);				
-=======
 				System.out.println("");
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
->>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
                 if(playerList.get(i).isHuman == true)
                 {
                 	ReportDice(i);	
                 	SetTargetList(i);
                     PlayerChoice(i);
                     EndTurn();
-<<<<<<< HEAD
-                }	
-=======
                 }			
->>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
                 else
                 {
                 	
                 }
-<<<<<<< HEAD
-		}
-	}	
-		
-		
-=======
 			}
-		}
->>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
+		}	
 		public void SetTargetList(int i)
 		{
             System.out.println("What would you like to do?");
@@ -164,7 +150,7 @@ public class SetUpGame
                 }    
             }
 		}
-		
+
 		public void PlayerChoice(int i)
 		{
 			if(playerList.get(i).mana > playerList.get(i).dTwelve)
@@ -209,7 +195,6 @@ public class SetUpGame
 			targetList.remove(0);
 			targetList.remove(0);
 			targetList.remove(0);
-			turn += 1;
 		}	
 		public void ReportDice(int I)
 		{
@@ -233,7 +218,15 @@ public class SetUpGame
 			}
 			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
 			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
+			SetDeath(TargetIndex);
 		}	
+		public void SetDeath(int TargetIndex)
+		{
+			if (playerList.get(TargetIndex).health <= 0)
+			{
+				playerList.remove(TargetIndex);
+			}
+		}
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
 			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)
