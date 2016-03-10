@@ -117,23 +117,38 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
+<<<<<<< HEAD
 				playerList.get(i).RollDice();
 				SetDiceValue(i);				
+=======
+				System.out.println("");
+				playerList.get(i).RollDice();
+				SetDiceValue(i);
+>>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
                 if(playerList.get(i).isHuman == true)
                 {
                 	ReportDice(i);	
                 	SetTargetList(i);
                     PlayerChoice(i);
                     EndTurn();
+<<<<<<< HEAD
                 }	
+=======
+                }			
+>>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
                 else
                 {
                 	
                 }
+<<<<<<< HEAD
 		}
 	}	
 		
 		
+=======
+			}
+		}
+>>>>>>> 34aaa9fe3d2ac7b7023208776721dd56812957bf
 		public void SetTargetList(int i)
 		{
             System.out.println("What would you like to do?");
@@ -152,24 +167,40 @@ public class SetUpGame
 		
 		public void PlayerChoice(int i)
 		{
-            int	inputInt = scanner.nextInt();
-            switch(inputInt)
-            {
-                case 1:
-                    playerList.get(i).PlayerRest();
-                    break;
-                case 2:
-                    Attack(targetList.get(0), i);
-                    break;
-                case 3:
-                    Attack(targetList.get(1), i);
-                    break;
-                case 4:
-                    Attack(targetList.get(2), i);
-                    break;
-                default:
-                    break;
-            }
+			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			{
+				int	inputInt = scanner.nextInt();
+				switch(inputInt)
+				{
+	                case 1:
+	                    playerList.get(i).PlayerRest();
+	                    break;
+	                case 2:
+	                    Attack(targetList.get(0), i);
+	                    break;
+	                case 3:
+	                    Attack(targetList.get(1), i);
+	                    break;
+	                case 4:
+	                    Attack(targetList.get(2), i);
+	                    break;
+	                default:
+	                    break;
+				}
+			}
+			else
+			{
+	            int	inputInt = scanner.nextInt();
+	            switch(inputInt)
+	            {
+	               case 1:
+	            	   playerList.get(i).PlayerRest();
+	            	   break;
+	               default:
+	            	   break;
+	            }
+				
+			}
 		}
 		
 		public void EndTurn()
@@ -178,6 +209,7 @@ public class SetUpGame
 			targetList.remove(0);
 			targetList.remove(0);
 			targetList.remove(0);
+			turn += 1;
 		}	
 		public void ReportDice(int I)
 		{
