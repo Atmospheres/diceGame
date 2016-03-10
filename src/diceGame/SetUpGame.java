@@ -117,51 +117,68 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
-				player.RollDice();
-				SetDiceValue(i);
 				playerList.get(i).RollDice();
-				SetDiceValue(i);
-				ReportDice(i);	
+				SetDiceValue(i);				
                 if(playerList.get(i).isHuman == true)
                 {
-                    System.out.println("What would you like to do?");
-                    System.out.println("1: Rest" );
-                    int options = 2;
-                    for(int j = 0; j < playerList.size(); j++)
-                    {
-                        if(i != j)
-                        {
-                        System.out.println(options + ": Attack " + playerList.get(j).name);
-                        targetList.add(j);
-                        options += 1;
-                        }    
-                    }
-                    int	inputInt = scanner.nextInt();
-                    switch(inputInt)
-                    {
-                        case 1:
-                            playerList.get(i).PlayerRest();
-                            break;
-                        case 2:
-                            Attack(targetList.get(0), i);
-                            break;
-                        case 3:
-                            Attack(targetList.get(1), i);
-                            break;
-                        case 4:
-                            Attack(targetList.get(2), i);
-                            break;
-                        default:
-                            break;
-                    }
-			}	
-    				targetList.remove(0);
-    				targetList.remove(0);
-    				targetList.remove(0);
-			}			
-			turn += 1;
+                	ReportDice(i);	
+                	SetTargetList(i);
+                    PlayerChoice(i);
+                    EndTurn();
+                }	
+                else
+                {
+                	
+                }
+		}
+	}	
+		
+		
+		public void SetTargetList(int i)
+		{
+            System.out.println("What would you like to do?");
+            System.out.println("1: Rest" );
+			int options = 2;
+            for(int j = 0; j < playerList.size(); j++)
+            {
+                if(i != j)
+                {
+                System.out.println(options + ": Attack " + playerList.get(j).name);
+                targetList.add(j);
+                options += 1;
+                }    
+            }
 		}
 		
+		public void PlayerChoice(int i)
+		{
+            int	inputInt = scanner.nextInt();
+            switch(inputInt)
+            {
+                case 1:
+                    playerList.get(i).PlayerRest();
+                    break;
+                case 2:
+                    Attack(targetList.get(0), i);
+                    break;
+                case 3:
+                    Attack(targetList.get(1), i);
+                    break;
+                case 4:
+                    Attack(targetList.get(2), i);
+                    break;
+                default:
+                    break;
+            }
+		}
+		
+		public void EndTurn()
+		{
+			turn += 1;
+			targetList.remove(0);
+			targetList.remove(0);
+			targetList.remove(0);
+		}	
 		public void ReportDice(int I)
 		{
 			int i = I;
@@ -184,7 +201,6 @@ public class SetUpGame
 			}
 			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
 			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
-			playerList.get(TargetIndex).ViewCurrentStats();
 		}	
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{

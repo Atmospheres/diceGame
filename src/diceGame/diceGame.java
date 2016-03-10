@@ -19,14 +19,15 @@ public class diceGame
 
 //Print all after each player's turn
 
+//AI random functions
 //AI mana cost vs damage logic
 
 
 
 //When we have time
 
-//AI random functions
-//AI elemental logic
+
+//AI elemental/multiplier logic
 //Print statements and formatting updates
 
 
