@@ -151,6 +151,9 @@ public class SetUpGame
                         default:
                             break;
                     }
+    				targetList.remove(0);
+    				targetList.remove(0);
+    				targetList.remove(0);
 			}			
 			}
 			turn += 1;
@@ -182,7 +185,7 @@ public class SetUpGame
 		}	
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
-			if (playerList.get(PlayerIndex).dEight == playerList.get(TargetIndex).dSix)
+			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)
 			{
 				playerList.get(PlayerIndex).dTwenty *= 2;
 			}
@@ -206,9 +209,4 @@ public class SetUpGame
 			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();
 			playerList.get(PlayerIndex).currentElement = playerList.get(PlayerIndex).SetPlayerElement();
 		}
-
-	//public PrintPlayerStats(){
-	//	for()// each item in playerlist call ViewCurrentStats on that player
-			
-	//}
 }

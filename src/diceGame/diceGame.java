@@ -9,7 +9,6 @@ public class diceGame
 		game.PlayerSetup();
 		game.SetPlayerName();
 		game.PrintAllStats();
-		System.out.println();
 		game.Match();
 	}
 }

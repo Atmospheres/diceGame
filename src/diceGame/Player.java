@@ -50,7 +50,6 @@ public class Player
 	public int SetPlayerGuard()
 	{
 		guardLevel = dTen;
-		System.out.println(guardLevel);
 		return guardLevel;
 	}
 	public String SetPlayerElement()
