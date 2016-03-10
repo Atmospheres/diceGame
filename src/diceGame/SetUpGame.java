@@ -7,6 +7,7 @@ public class SetUpGame
 {
 	boolean gameActive = true;
 	int turn;
+	int input;
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
 	ArrayList<Integer> targetList = new ArrayList<>();
@@ -19,9 +20,8 @@ public class SetUpGame
 	
 	public  void PlayerSetup()
 	{
-		gameActive = true;
-		System.out.println("How many Player players? (Max 4)");
-		int input = scanner.nextInt();
+		System.out.println("How many Human players? (Max 4)");
+		input = scanner.nextInt();
 		if(input > 0)
 		{
 			Player player1 = new Player();
@@ -133,7 +133,7 @@ public class SetUpGame
                 }			
                 else
                 {
-                	
+                	AIChoice(i);
                 }
                 EndTurn();
 			}
@@ -195,15 +195,14 @@ public class SetUpGame
 	            	   break;
 	               default:
 	            	   break;
-	            }
-				
+	            }				
 			}
 		}
 		public void AIChoice(int i)
 		{
 			if(playerList.get(i).mana > playerList.get(i).dTwelve)
 			{
-				int	inputInt = ThreadLocalRandom.current().nextInt(1,targetList.size() +2);
+				int	inputInt = ThreadLocalRandom.current().nextInt(1, targetList.size() + 2);
 				switch(inputInt)
 				{
 	                case 1:
@@ -227,7 +226,7 @@ public class SetUpGame
 			}
 			else
 			{
-	            	   playerList.get(i).PlayerRest();
+				playerList.get(i).PlayerRest();
 			}
 		}
 		public void EndTurn()
