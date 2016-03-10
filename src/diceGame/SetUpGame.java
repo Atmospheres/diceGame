@@ -121,43 +121,59 @@ public class SetUpGame
 				ReportDice(i);		
                 if(playerList.get(i).isHuman == true)
                 {
-                    System.out.println("What would you like to do?");
-                    System.out.println("1: Rest" );
-                    int options = 2;
-                    for(int j = 0; j < playerList.size(); j++)
-                    {
-                        if(i != j)
-                        {
-                        System.out.println(options + ": Attack " + playerList.get(j).name);
-                        targetList.add(j);
-                        options += 1;
-                        }    
-                    }
-                    int	inputInt = scanner.nextInt();
-                    switch(inputInt)
-                    {
-                        case 1:
-                            playerList.get(i).PlayerRest();
-                            break;
-                        case 2:
-                            Attack(targetList.get(0), i);
-                            break;
-                        case 3:
-                            Attack(targetList.get(1), i);
-                            break;
-                        case 4:
-                            Attack(targetList.get(2), i);
-                            break;
-                        default:
-                            break;
-                    }
-    				targetList.remove(0);
-    				targetList.remove(0);
-    				targetList.remove(0);
-			}			
+                	SetTargetList(i);
+                    PlayerChoice(i);
+                    EndTurn();
+                }			
 			}
+		}
+		
+		public void SetTargetList(int i)
+		{
+            System.out.println("What would you like to do?");
+            System.out.println("1: Rest" );
+			int options = 2;
+            for(int j = 0; j < playerList.size(); j++)
+            {
+                if(i != j)
+                {
+                System.out.println(options + ": Attack " + playerList.get(j).name);
+                targetList.add(j);
+                options += 1;
+                }    
+            }
+		}
+		
+		public void PlayerChoice(int i)
+		{
+            int	inputInt = scanner.nextInt();
+            switch(inputInt)
+            {
+                case 1:
+                    playerList.get(i).PlayerRest();
+                    break;
+                case 2:
+                    Attack(targetList.get(0), i);
+                    break;
+                case 3:
+                    Attack(targetList.get(1), i);
+                    break;
+                case 4:
+                    Attack(targetList.get(2), i);
+                    break;
+                default:
+                    break;
+            }
+		}
+		
+		public void EndTurn()
+		{
+			targetList.remove(0);
+			targetList.remove(0);
+			targetList.remove(0);
 			turn += 1;
 		}
+		
 		
 		public void ReportDice(int I)
 		{
