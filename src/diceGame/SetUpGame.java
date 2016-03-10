@@ -111,6 +111,7 @@ public class SetUpGame
 		}
 		public void Match()
 		{
+			PlayerSetup();
 			while(playerList.size() > 1)
 			{		
 				this.Turn();
