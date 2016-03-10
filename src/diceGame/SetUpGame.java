@@ -20,46 +20,45 @@ public class SetUpGame
 		gameActive = true;
 		System.out.println("How many Player players? (Max 4)");
 		int input = scanner.nextInt();
-		//player.dice.RollDice();
 		if(input > 0)
 		{
 			Player player1 = new Player();
 			playerList.add(player1);
-			player.SetDiceValue();
+			SetDiceValue(0);
 			input -= 1;
 		}
 		else
 		{
 			AI player1 = new AI();
 			playerList.add(player1);
-			player.SetDiceValue();
+			SetDiceValue(0);
 		}
 		if(input > 0)
 		{
 			Player player2 = new Player();
 			playerList.add(player2);
-			player.SetDiceValue();
+			SetDiceValue(1);
 			input -= 1;
 		}
 		else
 		{
 			AI player2 = new AI();
 			playerList.add(player2);
-			player.SetDiceValue();
+			SetDiceValue(1);
 
 		}
 		if(input > 0)
 		{
 			Player player3 = new Player();
 			playerList.add(player3);
-			player.SetDiceValue();
+			SetDiceValue(2);
 			input -= 1;
 		}
 		else
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
-			player.SetDiceValue();
+			SetDiceValue(3);
 
 		}
 	
@@ -67,20 +66,20 @@ public class SetUpGame
 		{
 			Player player4 = new Player();
 			playerList.add(player4);
-			player.SetDiceValue();
+			SetDiceValue(2);
 			input -= 1;
 		}
 		else
 		{
 			AI player4 = new AI();
 			playerList.add(player4);
-			player.SetDiceValue();
+			SetDiceValue(3);
 		}	
 		for(int i = 0; i < 4; i++)
 		{
-			player.dice.RollDice();
-			player.SetDiceValue();
-		}
+			player.RollDice();
+			SetDiceValue(3);
+		}	
 	}
 
 		public void SetPlayerName()
@@ -92,8 +91,6 @@ public class SetUpGame
 				System.out.println("Please enter a name for player " + playerNumber + ": ");
 				String name = scanner.nextLine();
 				playerList.get(i).name = name;
-				player.dice.RollDice();
-				player.SetDiceValue();
 			}
 		}  
 		public void PrintRules()
@@ -124,9 +121,11 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
-				player.dice.RollDice();
-				player.SetDiceValue();
-				ReportDice(i);		
+				player.RollDice();
+				SetDiceValue(i);
+				playerList.get(i).RollDice();
+				SetDiceValue(i);
+				ReportDice(i);	
                 if(playerList.get(i).isHuman == true)
                 {
                     System.out.println("What would you like to do?");
@@ -159,7 +158,10 @@ public class SetUpGame
                         default:
                             break;
                     }
-			}			
+			}	
+                targetList.remove(0);
+                targetList.remove(0);
+                targetList.remove(0);
 			}
 			turn += 1;
 		}
@@ -169,30 +171,30 @@ public class SetUpGame
 			int i = I;
 			System.out.println("Turn: " + turn);
 			System.out.println("Player " + playerList.get(i).name + " rolled:");
-			System.out.println("Mana Regen(D4): " + player.dice.dFour);
-			System.out.println("Element(D6): " + playerList.get(i).currentElement + "(" + player.dice.dSix + ")");
-			System.out.println("Mulitplier(D8): " + player.dice.dEight);
-			System.out.println("Guard(D10): " + player.dice.dTen);
-			System.out.println("Attack Cost(D12): " + player.dice.dTwelve);
-			System.out.println("Attack Damage(D20): " + player.dice.dTwenty);
+			System.out.println("Mana Regen(D4): " + playerList.get(i).dFour);
+			System.out.println("Element(D6): " + playerList.get(i).currentElement + "(" + playerList.get(i).dSix + ")");
+			System.out.println("Mulitplier(D8): " + playerList.get(i).dEight);
+			System.out.println("Guard(D10): " + playerList.get(i).dTen);
+			System.out.println("Attack Cost(D12): " + playerList.get(i).dTwelve);
+			System.out.println("Attack Damage(D20): " + playerList.get(i).dTwenty);
 		}
 		public void Attack(int TargetIndex, int PlayerIndex)
 		{
-			CalculateCritial();
+			CalculateCritial(TargetIndex, PlayerIndex);
 			CalculateElemental(TargetIndex, PlayerIndex);
-			if (playerList.get(TargetIndex).guardLevel > player.dice.dTwenty)
+			if (playerList.get(TargetIndex).guardLevel > playerList.get(PlayerIndex).dTwenty)
 			{
-				playerList.get(TargetIndex).guardLevel = player.dice.dTwenty;
+				playerList.get(TargetIndex).guardLevel = playerList.get(PlayerIndex).dTwenty;
 			}
-			playerList.get(TargetIndex).health -= player.dice.dTwenty - playerList.get(TargetIndex).guardLevel;
-			playerList.get(PlayerIndex).mana -= player.dice.dTwelve;
+			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
+			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
 			playerList.get(TargetIndex).ViewCurrentStats();
 		}	
-		public void CalculateCritial()
+		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
-			if (player.dice.dEight == player.dice.dSix)
+			if (playerList.get(PlayerIndex).dEight == playerList.get(TargetIndex).dSix)
 			{
-				player.dice.dTwenty *= 2;
+				playerList.get(PlayerIndex).dTwenty *= 2;
 			}
 		}
 		public void CalculateElemental(int TargetIndex, int PlayerIndex)
@@ -200,17 +202,17 @@ public class SetUpGame
 			if(playerList.get(PlayerIndex).element == playerList.get(TargetIndex).element - 1 || 
 					playerList.get(PlayerIndex).element == 6 && playerList.get(TargetIndex).element == 1)
 			{
-				player.dice.dTwenty *= 2;
+				playerList.get(PlayerIndex).dTwenty *= 2;
 			}
 			else if(playerList.get(PlayerIndex).element == playerList.get(TargetIndex).element + 1 ||
 					playerList.get(PlayerIndex).element == 1 && playerList.get(TargetIndex).element == 6)
 			{
-				player.dice.dTwenty /= 2;
+				playerList.get(PlayerIndex).dTwenty /= 2;
 			}
 		}
-
-	//public PrintPlayerStats(){
-	//	for()// each item in playerlist call ViewCurrentStats on that player
-			
-	//}
+		public void SetDiceValue(int PlayerIndex)
+		{
+			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();
+			playerList.get(PlayerIndex).currentElement = playerList.get(PlayerIndex).SetPlayerElement();
+		}		
 }

@@ -10,8 +10,14 @@ public class Player
 	int guardLevel = SetPlayerGuard();
 	int mana;
 	int playerNumber;
-	int element = dice.dSix;
+	int element;
 	boolean isHuman;
+	int dFour;
+	int dSix;
+	int dEight;
+	int dTen;
+	int dTwelve;
+	int dTwenty;
 	
 	
 	
@@ -20,6 +26,8 @@ public class Player
 		health = 100;
 		mana = 50;
 		isHuman = true;
+		RollDice();
+		
 	}
 	
 	public void ViewCurrentStats()
@@ -28,7 +36,7 @@ public class Player
 	}
 	public void ManaRegen()
 	{
-		int manaIncrease = dice.dFour;
+		int manaIncrease = dFour;
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
 	}
@@ -42,13 +50,12 @@ public class Player
 
 	public int SetPlayerGuard()
 	{
-		guardLevel = dice.dTen;
-		System.out.println(guardLevel);
+		guardLevel = dTen;
 		return guardLevel;
 	}
 	public String SetPlayerElement()
 	{
-			element = dice.dSix;
+			element = dSix;
 			switch(element)
 			{
 				case 1:
@@ -73,13 +80,15 @@ public class Player
 					currentElement = "Fire";
 					break;
 			}
-			System.out.println(element);
-			System.out.println(currentElement);
 			return currentElement;
 	}
-	public void SetDiceValue()
+	public void RollDice()
 	{
-		guardLevel = SetPlayerGuard();
-		currentElement = SetPlayerElement();
+		dFour = dice.DFour();
+		dSix = dice.DSix();
+		dEight = dice.DEight();
+		dTen = dice.DTen();
+		dTwelve = dice.DTwelve();
+		dTwenty = dice.DTwenty();
 	}
-}		
+}	
