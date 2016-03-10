@@ -1,6 +1,7 @@
 package diceGame;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SetUpGame
 {
@@ -124,17 +125,17 @@ public class SetUpGame
 				System.out.println("");
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
+                ReportDice(i);
+				SetTargetList(i);
                 if(playerList.get(i).isHuman == true)
                 {
-                	ReportDice(i);	
-                	SetTargetList(i);
-                    PlayerChoice(i);
-                    EndTurn();
+                    PlayerChoice(i);                
                 }			
                 else
                 {
                 	
                 }
+                EndTurn();
 			}
 		}	
 		public void SetTargetList(int i)
@@ -174,11 +175,11 @@ public class SetUpGame
 	                    break;
 	                case 3:
 	                    Attack(targetList.get(1), i);
-	                    SetDeath(targetList.get(0));
+	                    SetDeath(targetList.get(1));
 	                    break;
 	                case 4:
 	                    Attack(targetList.get(2), i);
-	                    SetDeath(targetList.get(0));
+	                    SetDeath(targetList.get(2));
 	                    break;
 	                default:
 	                    break;
@@ -198,8 +199,40 @@ public class SetUpGame
 				
 			}
 		}
+		public void AIChoice(int i)
+		{
+			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			{
+				int	inputInt = ThreadLocalRandom.current().nextInt(1,targetList.size() +2);
+				switch(inputInt)
+				{
+	                case 1:
+	                    playerList.get(i).PlayerRest();
+	                    break;
+	                case 2:
+	                    Attack(targetList.get(0), i);
+	                    SetDeath(targetList.get(0));
+	                    break;
+	                case 3:
+	                    Attack(targetList.get(1), i);
+	                    SetDeath(targetList.get(1));
+	                    break;
+	                case 4:
+	                    Attack(targetList.get(2), i);
+	                    SetDeath(targetList.get(2));
+	                    break;
+	                default:
+	                    break;
+				}
+			}
+			else
+			{
+	            	   playerList.get(i).PlayerRest();
+			}
+		}
 		public void EndTurn()
 		{
+			turn += 1;
 			targetList.removeAll(targetList);
 		}	
 		public void ReportDice(int I)
