@@ -58,7 +58,7 @@ public class SetUpGame
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
-			SetDiceValue(2);
+			SetDiceValue(3);
 
 		}
 	
@@ -66,7 +66,7 @@ public class SetUpGame
 		{
 			Player player4 = new Player();
 			playerList.add(player4);
-			SetDiceValue(3);
+			SetDiceValue(2);
 			input -= 1;
 		}
 		else
@@ -74,7 +74,12 @@ public class SetUpGame
 			AI player4 = new AI();
 			playerList.add(player4);
 			SetDiceValue(3);
-		}		
+		}	
+		for(int i = 0; i < 4; i++)
+		{
+			player.RollDice();
+			SetDiceValue(3);
+		}	
 	}
 
 		public void SetPlayerName()
@@ -116,11 +121,14 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
+				player.RollDice();
+				SetDiceValue(i);
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
-				ReportDice(i);		
+				ReportDice(i);	
                 if(playerList.get(i).isHuman == true)
                 {
+
                 	SetTargetList(i);
                     PlayerChoice(i);
                     EndTurn();
@@ -171,10 +179,7 @@ public class SetUpGame
 			targetList.remove(0);
 			targetList.remove(0);
 			targetList.remove(0);
-			turn += 1;
-		}
-		
-		
+		}	
 		public void ReportDice(int I)
 		{
 			int i = I;
@@ -219,7 +224,6 @@ public class SetUpGame
 				playerList.get(PlayerIndex).dTwenty /= 2;
 			}
 		}
-		
 		public void SetDiceValue(int PlayerIndex)
 		{
 			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();

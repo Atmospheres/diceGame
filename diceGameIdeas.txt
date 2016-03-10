@@ -5,12 +5,12 @@ Dice Game
 D4- mana regen value
 
 D6- Determines Element attack and defense   save in an array i = d6-1
-	earth
-	wind
 	fire
-	water
 	ice
+	wind
+	earth
 	lightning
+	water
 	
 
 D8- if d6 == 1 //elemental multiplier
@@ -114,6 +114,8 @@ playersleft =4
 		else playerturn ++
 
 
+		
+		PlayerRest(playerList.get(i));
 
 	if playerturn = 5
 		recap
