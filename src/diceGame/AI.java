@@ -7,7 +7,5 @@ public class AI extends Player
 	{
 		isHuman = false;
 	}
-		
-	
 	
 }

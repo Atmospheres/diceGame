@@ -1,6 +1,7 @@
 package diceGame;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class SetUpGame
 {
 	boolean gameActive = true;
@@ -75,11 +76,6 @@ public class SetUpGame
 			playerList.add(player4);
 			SetDiceValue(3);
 		}	
-		for(int i = 0; i < 4; i++)
-		{
-			player.RollDice();
-			SetDiceValue(3);
-		}	
 	}
 
 		public void SetPlayerName()
@@ -100,7 +96,8 @@ public class SetUpGame
 		
 		public void PrintAllStats()
 		{
-			for( int i = 0; i < playerList.size(); i++)
+			for(int i = 0; i < playerList.size(); i++)
+
 			{
 			playerList.get(i).ViewCurrentStats();
 			}
@@ -121,6 +118,8 @@ public class SetUpGame
 			{
 				PrintAllStats();
 				System.out.println(playerList.get(i).name + "'s turn.");
+				playerList.get(i).RollDice();
+				SetDiceValue(i);				
 				System.out.println("");
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
@@ -136,7 +135,7 @@ public class SetUpGame
                 	
                 }
 			}
-		}
+		}	
 		public void SetTargetList(int i)
 		{
             System.out.println("What would you like to do?");
@@ -157,7 +156,7 @@ public class SetUpGame
 				}
             }
 		}
-		
+
 		public void PlayerChoice(int i)
 		{
 			if(playerList.get(i).mana > playerList.get(i).dTwelve)
@@ -198,11 +197,13 @@ public class SetUpGame
 				
 			}
 		}
-		
 		public void EndTurn()
 		{
-			targetList.removeAll(targetList);
-			turn += 1;
+			// alternate method if it ends up outside range?
+			// targetList.removeAll(targetList);
+			targetList.remove(0);
+			targetList.remove(0);
+			targetList.remove(0);
 		}	
 		public void ReportDice(int I)
 		{
@@ -226,6 +227,7 @@ public class SetUpGame
 			}
 			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
 			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
+			SetDeath(TargetIndex);
 		}	
 		public void SetDeath(int TargetIndex)
         {
@@ -234,6 +236,8 @@ public class SetUpGame
                 playerList.remove(TargetIndex);
             }
         }
+
+
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
 			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)

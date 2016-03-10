@@ -12,3 +12,17 @@ public class diceGame
 	}
 }
 
+//DO TOMORROW
+
+//AI random functions
+//AI mana cost vs damage logic
+
+
+//When we have time
+
+
+//AI elemental/multiplier logic
+//Print statements and formatting updates
+
+
+
