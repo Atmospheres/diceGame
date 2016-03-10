@@ -119,25 +119,27 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				PrintAllStats();
-				System.out.println(playerList.get(i).name + "'s turn.");
-				playerList.get(i).RollDice();
-				SetDiceValue(i);				
+				System.out.println(playerList.get(i).name + "'s turn.");			
 				System.out.println("");
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
                 ReportDice(i);
 				SetTargetList(i);
-                if(playerList.get(i).isHuman == true)
-                {
-                    PlayerChoice(i);                
-                }			
-                else
-                {
-                	AIChoice(i);
-                }
+				CheckHuman(i);
                 EndTurn();
 			}
 		}	
+		public void CheckHuman(int i)
+		{
+			 if(playerList.get(i).isHuman == true)
+             {
+                 PlayerChoice(i);                
+             }			
+             else
+             {
+             	AIChoice(i);
+             }
+		}
 		public void SetTargetList(int i)
 		{
             System.out.println("What would you like to do?");
