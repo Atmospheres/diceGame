@@ -104,9 +104,8 @@ public class SetUpGame
 		{
 			System.out.println();
 			for(int i = 0; i < playerList.size(); i++)
-
 			{
-			playerList.get(i).ViewCurrentStats();
+				playerList.get(i).ViewCurrentStats();
 			}
 			System.out.println();
 		}
@@ -295,6 +294,6 @@ public class SetUpGame
 		public void EndMatch()
 		{
 			System.out.println();
-			System.out.println("Congratulations " + playerList.get(0).name + ", you won!") ;
+			System.out.println("Congratulations " + playerList.get(0).name + ", you won!");
 		}
 }

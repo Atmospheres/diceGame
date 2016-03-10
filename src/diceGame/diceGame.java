@@ -11,18 +11,4 @@ public class diceGame
 	}
 }
 
-//DO TOMORROW
-
-//AI random functions
-
-
-//When we have time
-
-
-//AI elemental
-//Print statements and formatting updates
-
-
-
-
 
