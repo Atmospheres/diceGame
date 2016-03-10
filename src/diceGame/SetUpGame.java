@@ -1,11 +1,13 @@
 package diceGame;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SetUpGame
 {
 	boolean gameActive = true;
 	int turn;
+	int input;
 	Player player = new Player();
 	ArrayList<Player> playerList = new ArrayList<>();
 	ArrayList<Integer> targetList = new ArrayList<>();
@@ -18,9 +20,8 @@ public class SetUpGame
 	
 	public  void PlayerSetup()
 	{
-		gameActive = true;
-		System.out.println("How many Player players? (Max 4)");
-		int input = scanner.nextInt();
+		System.out.println("How many Human players? (Max 4)");
+		input = scanner.nextInt();
 		if(input > 0)
 		{
 			Player player1 = new Player();
@@ -123,18 +124,18 @@ public class SetUpGame
 				SetDiceValue(i);				
 				System.out.println("");
 				playerList.get(i).RollDice();
-				SetDiceValue(i);
+				SetDiceValue(i);                	
+				ReportDice(i);	               
+				SetTargetList(i);
                 if(playerList.get(i).isHuman == true)
                 {
-                	ReportDice(i);	
-                	SetTargetList(i);
-                    PlayerChoice(i);
-                    EndTurn();
+                    PlayerChoice(i);                  
                 }			
                 else
                 {
-                	
+                	AIChoice(i);
                 }
+                EndTurn();
 			}
 		}	
 		public void SetTargetList(int i)
@@ -174,11 +175,11 @@ public class SetUpGame
 	                    break;
 	                case 3:
 	                    Attack(targetList.get(1), i);
-	                    SetDeath(targetList.get(0));
+	                    SetDeath(targetList.get(1));
 	                    break;
 	                case 4:
 	                    Attack(targetList.get(2), i);
-	                    SetDeath(targetList.get(0));
+	                    SetDeath(targetList.get(2));
 	                    break;
 	                default:
 	                    break;
@@ -194,12 +195,43 @@ public class SetUpGame
 	            	   break;
 	               default:
 	            	   break;
-	            }
-				
+	            }				
+			}
+		}
+		public void AIChoice(int i)
+		{
+			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			{
+				int	inputInt = ThreadLocalRandom.current().nextInt(1, targetList.size() + 2);
+				switch(inputInt)
+				{
+	                case 1:
+	                    playerList.get(i).PlayerRest();
+	                    break;
+	                case 2:
+	                    Attack(targetList.get(0), i);
+	                    SetDeath(targetList.get(0));
+	                    break;
+	                case 3:
+	                    Attack(targetList.get(1), i);
+	                    SetDeath(targetList.get(1));
+	                    break;
+	                case 4:
+	                    Attack(targetList.get(2), i);
+	                    SetDeath(targetList.get(2));
+	                    break;
+	                default:
+	                    break;
+				}
+			}
+			else
+			{
+				playerList.get(i).PlayerRest();
 			}
 		}
 		public void EndTurn()
 		{
+			turn += 1;
 			targetList.removeAll(targetList);
 		}	
 		public void ReportDice(int I)
