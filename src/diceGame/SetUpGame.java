@@ -121,21 +121,22 @@ public class SetUpGame
 			for(int i = 0; i < playerList.size(); i++)
 			{
 				System.out.println(playerList.get(i).name + "'s turn.");
-				player.RollDice();
-				SetDiceValue(i);
+				System.out.println("");
 				playerList.get(i).RollDice();
 				SetDiceValue(i);
-				ReportDice(i);	
                 if(playerList.get(i).isHuman == true)
                 {
-
+                	ReportDice(i);	
                 	SetTargetList(i);
                     PlayerChoice(i);
                     EndTurn();
                 }			
+                else
+                {
+                	
+                }
 			}
 		}
-		
 		public void SetTargetList(int i)
 		{
             System.out.println("What would you like to do?");
@@ -154,24 +155,40 @@ public class SetUpGame
 		
 		public void PlayerChoice(int i)
 		{
-            int	inputInt = scanner.nextInt();
-            switch(inputInt)
-            {
-                case 1:
-                    playerList.get(i).PlayerRest();
-                    break;
-                case 2:
-                    Attack(targetList.get(0), i);
-                    break;
-                case 3:
-                    Attack(targetList.get(1), i);
-                    break;
-                case 4:
-                    Attack(targetList.get(2), i);
-                    break;
-                default:
-                    break;
-            }
+			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			{
+				int	inputInt = scanner.nextInt();
+				switch(inputInt)
+				{
+	                case 1:
+	                    playerList.get(i).PlayerRest();
+	                    break;
+	                case 2:
+	                    Attack(targetList.get(0), i);
+	                    break;
+	                case 3:
+	                    Attack(targetList.get(1), i);
+	                    break;
+	                case 4:
+	                    Attack(targetList.get(2), i);
+	                    break;
+	                default:
+	                    break;
+				}
+			}
+			else
+			{
+	            int	inputInt = scanner.nextInt();
+	            switch(inputInt)
+	            {
+	               case 1:
+	            	   playerList.get(i).PlayerRest();
+	            	   break;
+	               default:
+	            	   break;
+	            }
+				
+			}
 		}
 		
 		public void EndTurn()
@@ -179,6 +196,7 @@ public class SetUpGame
 			targetList.remove(0);
 			targetList.remove(0);
 			targetList.remove(0);
+			turn += 1;
 		}	
 		public void ReportDice(int I)
 		{
@@ -202,7 +220,6 @@ public class SetUpGame
 			}
 			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
 			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
-			playerList.get(TargetIndex).ViewCurrentStats();
 		}	
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
