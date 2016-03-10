@@ -60,7 +60,7 @@ public class SetUpGame
 		{
 			AI player3 = new AI();
 			playerList.add(player3);
-			SetDiceValue(3);
+			SetDiceValue(2);
 
 		}
 	
@@ -68,7 +68,7 @@ public class SetUpGame
 		{
 			Player player4 = new Player();
 			playerList.add(player4);
-			SetDiceValue(2);
+			SetDiceValue(3);
 			input -= 1;
 		}
 		else
@@ -98,11 +98,12 @@ public class SetUpGame
 		
 		public void PrintAllStats()
 		{
+			System.out.println();
 			for(int i = 0; i < playerList.size(); i++)
-
 			{
-			playerList.get(i).ViewCurrentStats();
+				playerList.get(i).ViewCurrentStats();
 			}
+			System.out.println();
 		}
 		public void Match()
 		{
@@ -110,9 +111,7 @@ public class SetUpGame
 			{		
 				this.Turn();
 			}
-			if(playerList.size() == 1){
-				System.out.println("Game Over!");
-			}			
+			EndMatch();
 		}
 		public void Turn()
 		{
@@ -173,15 +172,12 @@ public class SetUpGame
 	                    break;
 	                case 2:
 	                    Attack(targetList.get(0), i);
-	                    SetDeath(targetList.get(0));
 	                    break;
 	                case 3:
 	                    Attack(targetList.get(1), i);
-	                    SetDeath(targetList.get(1));
 	                    break;
 	                case 4:
 	                    Attack(targetList.get(2), i);
-	                    SetDeath(targetList.get(2));
 	                    break;
 	                default:
 	                    break;
@@ -212,15 +208,12 @@ public class SetUpGame
 	                    break;
 	                case 2:
 	                    Attack(targetList.get(0), i);
-	                    SetDeath(targetList.get(0));
 	                    break;
 	                case 3:
 	                    Attack(targetList.get(1), i);
-	                    SetDeath(targetList.get(1));
 	                    break;
 	                case 4:
 	                    Attack(targetList.get(2), i);
-	                    SetDeath(targetList.get(2));
 	                    break;
 	                default:
 	                    break;
@@ -250,7 +243,7 @@ public class SetUpGame
 		}
 		public void Attack(int TargetIndex, int PlayerIndex)
 		{
-			CalculateCritial(TargetIndex, PlayerIndex);
+			CalculateCritical(TargetIndex, PlayerIndex);
 			CalculateElemental(TargetIndex, PlayerIndex);
 			if (playerList.get(TargetIndex).guardLevel > playerList.get(PlayerIndex).dTwenty)
 			{
@@ -264,10 +257,12 @@ public class SetUpGame
         {
             if (playerList.get(TargetIndex).health <= 0)
             {
+            	System.out.println();
+                System.out.println(playerList.get(TargetIndex).name + " has been defeated!");
                 playerList.remove(TargetIndex);
             }
         }
-		public void CalculateCritial(int TargetIndex, int PlayerIndex)
+		public void CalculateCritical(int TargetIndex, int PlayerIndex)
 		{
 			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)
 			{
@@ -291,5 +286,10 @@ public class SetUpGame
 		{
 			playerList.get(PlayerIndex).guardLevel = playerList.get(PlayerIndex).SetPlayerGuard();
 			playerList.get(PlayerIndex).currentElement = playerList.get(PlayerIndex).SetPlayerElement();
+		}
+		public void EndMatch()
+		{
+			System.out.println();
+			System.out.println("Congratulations " + playerList.get(0).name + ", you won!");
 		}
 }

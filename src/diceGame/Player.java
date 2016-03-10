@@ -31,17 +31,26 @@ public class Player
 	{
 		System.out.println("Name: " + name + "\t Health: " + health + "\t Mana: " + mana + "\t Guard: " + SetPlayerGuard() + "\t Element: " + SetPlayerElement());
 	}
-	public void ManaRegen()
+	public int ManaRegen()
 	{
 		int manaIncrease = dFour;
 		mana += manaIncrease;
 		System.out.println("Amount of mana regenerated:" + manaIncrease + " mana.");
+		return mana;
+	}
+	public int CalculateCriticalMana(int ManaIncrease)
+	{
+		if (dEight == dSix)
+		{
+			ManaIncrease *= 2;
+		}
+		return ManaIncrease;
 	}
 	public void PlayerRest()
 	{
-		int manaIncrease = dice.DFour() + dice.DFour() + dice.DFour();
-		mana += manaIncrease;
-		System.out.println("After 3 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
+		int manaIncrease = dice.DFour() + dice.DFour();
+		mana += CalculateCriticalMana(manaIncrease);
+		System.out.println("After 2 rolls of the four-sided die, your total mana increase is " + manaIncrease + " mana.");
 	}
 	public int SetPlayerGuard()
 	{
