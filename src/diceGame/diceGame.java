@@ -10,10 +10,3 @@ public class diceGame
 		game.Match();
 	}
 }
-//When we have time
-
-//AI elemental
-//Print statements and formatting updates
-
-
-

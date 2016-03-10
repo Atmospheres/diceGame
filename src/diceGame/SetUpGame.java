@@ -31,9 +31,10 @@ public class SetUpGame
 		}
 		else
 		{
-			AI player1 = new AI();
+			Player player1 = new Player();
 			playerList.add(player1);
 			SetDiceValue(0);
+			player1.isHuman = false;
 		}
 		if(input > 0)
 		{
@@ -44,10 +45,10 @@ public class SetUpGame
 		}
 		else
 		{
-			AI player2 = new AI();
+			Player player2 = new Player();
 			playerList.add(player2);
 			SetDiceValue(1);
-
+			player2.isHuman = false;
 		}
 		if(input > 0)
 		{
@@ -58,10 +59,10 @@ public class SetUpGame
 		}
 		else
 		{
-			AI player3 = new AI();
+			Player player3 = new Player();
 			playerList.add(player3);
 			SetDiceValue(2);
-
+			player3.isHuman = false;
 		}
 	
 		if(input > 0)
@@ -73,9 +74,10 @@ public class SetUpGame
 		}
 		else
 		{
-			AI player4 = new AI();
+			Player player4 = new Player();
 			playerList.add(player4);
 			SetDiceValue(3);
+			player4.isHuman = false;
 		}	
 		SetPlayerName();
 	}
