@@ -8,7 +8,6 @@ public class diceGame
 
 		game.PlayerSetup();
 		game.SetPlayerName();
-		game.PrintAllStats();
 		game.Match();
 	}
 }

@@ -100,7 +100,7 @@ public class SetUpGame
 		
 		public void PrintAllStats()
 		{
-			for( int i = 0; i < 4; i++)
+			for( int i = 0; i < playerList.size(); i++)
 			{
 			playerList.get(i).ViewCurrentStats();
 			}
@@ -110,7 +110,6 @@ public class SetUpGame
 			while(playerList.size() > 1)
 			{		
 				this.Turn();
-				PrintAllStats();
 			}
 			if(playerList.size() == 1){
 				System.out.println("Game Over!");
@@ -120,6 +119,7 @@ public class SetUpGame
 		{
 			for(int i = 0; i < playerList.size(); i++)
 			{
+				PrintAllStats();
 				System.out.println(playerList.get(i).name + "'s turn.");
 				System.out.println("");
 				playerList.get(i).RollDice();
@@ -141,15 +141,20 @@ public class SetUpGame
 		{
             System.out.println("What would you like to do?");
             System.out.println("1: Rest" );
-			int options = 2;
-            for(int j = 0; j < playerList.size(); j++)
-            {
-                if(i != j)
-                {
-                System.out.println(options + ": Attack " + playerList.get(j).name);
-                targetList.add(j);
-                options += 1;
-                }    
+			
+			if(playerList.get(i).mana > playerList.get(i).dTwelve)
+			{
+				
+				int options = 2;
+				for(int j = 0; j < playerList.size(); j++)
+				{
+					if(i != j)
+					{
+						System.out.println(options + ": Attack " + playerList.get(j).name);
+						targetList.add(j);
+						options += 1;
+					}    
+				}
             }
 		}
 		
@@ -165,12 +170,15 @@ public class SetUpGame
 	                    break;
 	                case 2:
 	                    Attack(targetList.get(0), i);
+	                    SetDeath(targetList.get(0));
 	                    break;
 	                case 3:
 	                    Attack(targetList.get(1), i);
+	                    SetDeath(targetList.get(0));
 	                    break;
 	                case 4:
 	                    Attack(targetList.get(2), i);
+	                    SetDeath(targetList.get(0));
 	                    break;
 	                default:
 	                    break;
@@ -193,9 +201,7 @@ public class SetUpGame
 		
 		public void EndTurn()
 		{
-			targetList.remove(0);
-			targetList.remove(0);
-			targetList.remove(0);
+			targetList.removeAll(targetList);
 			turn += 1;
 		}	
 		public void ReportDice(int I)
@@ -221,6 +227,13 @@ public class SetUpGame
 			playerList.get(TargetIndex).health -= playerList.get(PlayerIndex).dTwenty - playerList.get(TargetIndex).guardLevel;
 			playerList.get(PlayerIndex).mana -= playerList.get(PlayerIndex).dTwelve;
 		}	
+		public void SetDeath(int TargetIndex)
+        {
+            if (playerList.get(TargetIndex).health <= 0)
+            {
+                playerList.remove(TargetIndex);
+            }
+        }
 		public void CalculateCritial(int TargetIndex, int PlayerIndex)
 		{
 			if (playerList.get(PlayerIndex).dEight == playerList.get(PlayerIndex).dSix)
